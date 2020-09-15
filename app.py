@@ -250,8 +250,8 @@ def edit_article(id):
     form.body.data = article['body']
 
     if request.method == 'POST' and form.validate():
-        title = form.title.data
-        body = form.body.data
+        title = request.form['title']
+        body = request.form['body']
 
         # Create Cursor 
         cur = mysql.connection.cursor()
@@ -270,6 +270,27 @@ def edit_article(id):
         return redirect(url_for('dashboard'))
 
     return render_template('edit_article.html', form=form)
+
+
+# Delete Article 
+@app.route('/delete_article/<string:id>', methods=['POST'])
+@is_logged_in
+def delete_article(id):
+    # Create the cursor 
+    cur = mysql.connection.cursor()
+
+    # Execute 
+    cur.execute("DELETE FROM articles WHERE id = %s", [id])
+
+    # Commit 
+    mysql.connection.commit()
+
+    # Close connection 
+    cur.close()
+
+    flash('Article Deleted','success')
+
+    return redirect(url_for('dashboard'))
 
 
 if __name__ == '__main__':
