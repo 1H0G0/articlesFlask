@@ -1,10 +1,32 @@
+# Progression course 
+Part 4 -
+
 # Flask app 
 Python Micro framework 
 
 # Dependencies 
-Flask WTForms validation
+pip install flask-mysqldb  #MySQL module for Flask app ! Flask-MySQLdb provides MySQL connection for Flask.
+pip install Flask-WTF  #Form Validation for Flask app
+pip install passlib #PIP passLib for hashing the passwords 
 
 #  Project 
 Dashboard
 CRUD ressources : articles management 
 Login / Register 
+
+##
+## Tricks and tips 
+##
+
+# Creating a route 
+@app.route('/')
+def index():
+    return 'INDEX PAGE here'
+
+# Printing codes 
+{% for article in articles %}
+
+{% endfor %}
+
+# Inserting values from variables 
+{{article.title + article.author}}
