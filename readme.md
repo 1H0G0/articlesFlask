@@ -1,6 +1,6 @@
 # articlesFlask
 
-Simple article mannagement app using Python Flask framework.
+Simple article management app using Python Flask framework.
 
 ## Installation
 
